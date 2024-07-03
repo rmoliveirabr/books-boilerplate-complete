@@ -1,0 +1,22 @@
+{
+    "name": "books-boilerplate-complete",
+    "private": true,
+    "workspaces": [
+        "backend",
+        "frontend"
+    ],
+    "scripts": {
+        "dev": "concurrently \"npm start --prefix backend\" \"npm run dev --prefix frontend\"",
+        "build": "concurrently \"npm run build --prefix backend\" \"npm run build --prefix frontend\""
+    },
+    "devDependencies": {
+        "concurrently": "^6.0.0"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.11.4",
+        "@emotion/styled": "^11.11.5",
+        "@mui/material": "^5.15.19",
+        "@mui/x-date-pickers": "^7.6.1",
+        "date-fns": "^3.6.0"
+    }
+}

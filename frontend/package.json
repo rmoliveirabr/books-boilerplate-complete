@@ -1,0 +1,46 @@
+{
+  "name": "frontend2",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@hookform/resolvers": "^3.6.0",
+    "@mui/icons-material": "^5.15.19",
+    "@mui/lab": "^5.0.0-alpha.170",
+    "@mui/material": "^5.15.19",
+    "@mui/x-data-grid": "^7.6.0",
+    "@mui/x-date-pickers": "^7.6.1",
+    "@swc/helpers": "^0.5.5",
+    "autoprefixer": "^10.4.19",
+    "axios": "^1.7.2",
+    "cssnano": "^7.0.2",
+    "date-fns": "^3.6.0",
+    "lucide-react": "^0.395.0",
+    "next": "^14.2.3",
+    "next-auth": "^4.24.7",
+    "pino": "^9.2.0",
+    "postcss": "^8.4.38",
+    "postcss-preset-env": "^9.5.14",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.52.0",
+    "react-toastify": "^10.0.5",
+    "source-map-js": "^1.2.0",
+    "styled-jsx": "^5.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,69 @@
+### Variables 
+@apiurl = http://172.22.47.28:3001/api
+@testtoken = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyNjk4YzczOS04NzBmLTRmMjYtYmEwYy04ZjJlYWFiMDYzNmIiLCJ1c2VybmFtZSI6Im1hcnRlZHRlaXhlaXJhQHRlc3RlLmNvbSIsImlhdCI6MTcxOTk0ODU3NX0.nAN3UsazDwyj6bkOLnXRMb_WO78nSER7PCrB6gI-xaY3n3EpuGXIFRD_DwET0e9o6rWHdIMeL-E1g31AXXbB7t8h5iulpOsFrbZcbveFTBan13FxglU1yhh144-tsYWaDefm1lmXecWsarkZm8rNz6aAP6n-xHMo55WpQf7tc0qobMxxSCnrlLLOEV4--s-GIIHQP0V5viYAh14ZpmAhgMtwpW2T3NtQUPa8LFDG0n7KuivQ_-Yl7L2iwU_VWXpMQiad1chqtCPpUzQFiAN5ccXYSfNubvAEERzhgOroO1GihrxBbwS2qjOQk-3rH5IHtYR2cgdksb0ib_uBLRa2jw
+
+### GET all books
+GET {{apiurl}}/books HTTP/1.1
+# Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI1NmFjYzNhYS04MDYzLTQ5MmEtYWM3OS1iMmI4NTRjMzRiMTEiLCJ1c2VybmFtZSI6InJtb2xpdmVpcmFAZ21haWwuY29tIiwiaWF0IjoxNzE4NjI3MzgzfQ.ZhudG1WxIpt4qo1MahQBXffZ9KPcGJoz7BuWDhkEQBu7Db6WMPNcvIp64a8-0MFagg7HwJH_enUgL-GFpVHm33wOXhjZNKyJW1GFOAXOUEtanHRij29JfkPV80WMStKbCR97F0q-FtYpRqz7VNhbCrIflXFubuq1BN-nuwx5paIoLZ9AEMsVoaYa7mtRxQ_sqqI9NzOD0stVdQIzbqpIR9U0-7HHr0AatpUenKvj2yMV7eZKvjFOY4Zl2uKAmrxLqllKPt-ts4jC0RuIwrSFPSOTDGp4NXm0fOwr2bvmuWpBx_63QDg82Hr-gwR5J__sin57En1LFiSrDEn16J-wKA
+
+### GET all books, filter page
+GET {{apiurl}}/books?page=1&pageSize=5 HTTP/1.1
+
+### GET all books, filter text
+GET {{apiurl}}/books?description=rods HTTP/1.1
+
+### POST signup
+POST {{apiurl}}/signup HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Marta 2",
+  "email": "martedteixeira@teste.com",
+  "password": "New%rods1",
+  "phone": "1198109877"
+}
+
+### POST signin
+# @name signin
+POST {{apiurl}}/signin HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "martedteixeira@teste.com",
+  "password": "New%rods1"
+}
+
+### POST test book
+# @name postBook
+@token = {{signin.response.body.access_token}}
+POST {{apiurl}}/books HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Marta's B3",
+  "author": "Marta",
+  "summary": "Summary 3",
+  "publisher": "Publisher  3",
+  "publicationDate": "2024-09-30"
+}
+
+### GET test book
+@newId = {{postBook.response.body.book.id}}
+GET {{apiurl}}/books/{{newId}} HTTP/1.1
+Content-Type: application/json
+
+### PUT test book
+@newId = {{postBook.response.body.book.id}}
+PUT {{apiurl}}/books/{{newId}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "E2E Test NEW 2",
+  "author": "Rods e Marta NEW",
+  "summary": "This is a summary. 3 NEW",
+  "publisher": "Publisher Name 2 NEW",
+  "publicationDate": "2024-09-30",
+  "creatorId": "123"
+}
